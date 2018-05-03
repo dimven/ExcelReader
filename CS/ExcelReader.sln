@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 5.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelReader", "ExcelReader.csproj", "{FDEADD55-4CAC-4439-BB53-0A9BA1704D67}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDEADD55-4CAC-4439-BB53-0A9BA1704D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDEADD55-4CAC-4439-BB53-0A9BA1704D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDEADD55-4CAC-4439-BB53-0A9BA1704D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDEADD55-4CAC-4439-BB53-0A9BA1704D67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

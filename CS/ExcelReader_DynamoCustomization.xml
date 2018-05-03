@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc>
+  <assembly>
+    <name>ExcelReader</name>
+  </assembly>
+    <namespaces>
+      <namespace name="EPPlus.ExcelReader">
+        <category>ExcelReader</category>
+      </namespace>
+    </namespaces>
+</doc>
