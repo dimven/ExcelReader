@@ -4,5 +4,7 @@ I don't plan on exposing the full functionality of EPPlus at this time.
    
 ### CHANGE LOG
 ------
-### 132.1.0 
+### 134.1.1 
+- Added basic functionality for named ranges
+### 132.1.1 
 - Initial Release
