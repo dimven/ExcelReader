@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using OfficeOpenXml;
 using System.IO;
 using System.Linq;
-//using Autodesk.DesignScript.Runtime;
 
 //Please refer to the included EPPlus license file if you plan to do anything commercial with that code!
 
@@ -102,5 +100,64 @@ namespace EPPlus.ExcelReader
                 return pck.Workbook.Worksheets.Select(ws => ws.Name).ToArray();
             }
         }
+        
+        /// <summary>
+        /// Gets all of the named ranges stored in an excel file. If the worksheet parameter is blank,
+        /// only ranges registered in the workbook will be fetched.
+        /// </summary>
+        /// <param name="file">a file object (use File.FromPath)</param>
+        /// <param name="sheetName">the name of the sheet as a string</param>
+        /// <returns>names</returns>
+        public static NamedRange[] NamedRanges(FileInfo file, string sheetName="")
+        {
+            
+        	using (ExcelPackage pck = new ExcelPackage(file))
+            {
+            	if(String.IsNullOrEmpty(sheetName))
+            	   {
+            		return pck.Workbook.Names.Select(r => new NamedRange(r.Name, r.Address)).ToArray();
+            	   }
+            	return pck.Workbook.Worksheets.First(ws => ws.Name == sheetName).Names.Select(r => new NamedRange(r.Name, r.Address)).ToArray();
+            }
+        }
     }
+    
+    
+    /// <summary>
+    /// A placeholder class used to display named ranges nicely in Dynamo
+    /// </summary>
+    public class NamedRange
+        {
+        	string name, address;
+        	internal NamedRange(string _name, string _addr)
+        	{
+        		name = _name;
+        		address = _addr;
+        	}
+        	
+        	/// <summary>
+        	/// standard dynamo preview
+        	/// </summary>
+        	public override string ToString()
+        	{
+        		return name;
+        	}
+        	
+        	/// <summary>
+        	/// fetches the address of a range as a basic string
+        	/// </summary>
+        	public object GetRangeAddress()
+        	{
+        		if (address.Contains(","))
+        		{
+        			return address.Split(',').Select(a => formatAddress(a)).ToArray();
+        		}
+        		return formatAddress(address);
+        	}
+        	
+        	private static string formatAddress(string a)
+        	{
+        		return a.Substring(a.IndexOf('!') + 1).Replace("$", "");
+        	}
+        }
 }
